@@ -1,0 +1,15 @@
+//
+//  UIButtonStrekchClick.pch
+//  Runtime笔记
+//
+//  Created by peterlee on 2020/8/9.
+//  Copyright © 2020 peterlee. All rights reserved.
+//
+
+#ifndef UIButtonStrekchClick_h
+#define UIButtonStrekchClick_h
+
+
+#import "UIImage+color.h"
+
+#endif /* UIButtonStrekchClick_h */

@@ -27,15 +27,15 @@
 //    BOOL add = class_addMethod([self class], @selector(custom_viewDidLoad), newM, method_getTypeEncoding(newM));
     
     //交换方法一 内部调用的就是下面这两个方法
-    method_exchangeImplementations(oldM, newM);
+//    method_exchangeImplementations(oldM, newM);
     
 //    //交换方法二
 //    class_replaceMethod([self class], @selector(viewDidLoad), class_getMethodImplementation([self class], @selector(custom_viewDidLoad)), method_getTypeEncoding(oldM));
     
     
     //交换方法三 交换方法的实质
-//    method_setImplementation(oldM, class_getMethodImplementation([self class], @selector(custom_viewDidLoad)));
-//    method_setImplementation(newM, class_getMethodImplementation([self class], @selector(viewDidLoad)));
+    method_setImplementation(oldM, class_getMethodImplementation([self class], @selector(custom_viewDidLoad)));
+    method_setImplementation(newM, class_getMethodImplementation([self class], @selector(viewDidLoad)));
     
 
     

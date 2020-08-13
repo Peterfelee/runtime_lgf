@@ -68,6 +68,13 @@
 		E7537E7224DFB89600224DC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7537E7124DFB89600224DC9 /* main.m */; };
 		E7537E7824DFF97A00224DC9 /* UIViewController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = E7537E7724DFF97A00224DC9 /* UIViewController+Category.m */; };
 		E7537E7B24DFFDA000224DC9 /* TestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7537E7A24DFFDA000224DC9 /* TestModel.m */; };
+		E78FBF3E24E565E500721E5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78FBF3D24E565E500721E5E /* AppDelegate.swift */; };
+		E78FBF4024E565E500721E5E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78FBF3F24E565E500721E5E /* SceneDelegate.swift */; };
+		E78FBF4224E565E500721E5E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78FBF4124E565E500721E5E /* ViewController.swift */; };
+		E78FBF4524E565E500721E5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78FBF4324E565E500721E5E /* Main.storyboard */; };
+		E78FBF4724E565E700721E5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78FBF4624E565E700721E5E /* Assets.xcassets */; };
+		E78FBF4A24E565E700721E5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78FBF4824E565E700721E5E /* LaunchScreen.storyboard */; };
+		E78FBF5024E5695500721E5E /* random.json in Resources */ = {isa = PBXBuildFile; fileRef = E78FBF4F24E5695500721E5E /* random.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -178,6 +185,15 @@
 		E7537E7724DFF97A00224DC9 /* UIViewController+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Category.m"; sourceTree = "<group>"; };
 		E7537E7924DFFDA000224DC9 /* TestModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestModel.h; sourceTree = "<group>"; };
 		E7537E7A24DFFDA000224DC9 /* TestModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestModel.m; sourceTree = "<group>"; };
+		E78FBF3B24E565E400721E5E /* 垂直的跑马灯.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "垂直的跑马灯.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E78FBF3D24E565E500721E5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E78FBF3F24E565E500721E5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E78FBF4124E565E500721E5E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E78FBF4424E565E500721E5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E78FBF4624E565E700721E5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E78FBF4924E565E700721E5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E78FBF4B24E565E700721E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E78FBF4F24E5695500721E5E /* random.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = random.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +246,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E78FBF3824E565E400721E5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -243,6 +266,7 @@
 				E7537DF424DF9A6200224DC9 /* 字典转模型 */,
 				E7537E1124DF9AA000224DC9 /* 自动归解档 */,
 				E7537E5E24DFB89500224DC9 /* 全屏测滑返回实现 */,
+				E78FBF3C24E565E500721E5E /* 垂直的跑马灯 */,
 				E72013D324DEBFAF003DB927 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -257,6 +281,7 @@
 				E7537E1024DF9AA000224DC9 /* 自动归解档.app */,
 				E7537E2D24DF9AAD00224DC9 /* 交换方法.app */,
 				E7537E5D24DFB89500224DC9 /* 全屏测滑返回实现.app */,
+				E78FBF3B24E565E400721E5E /* 垂直的跑马灯.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -410,6 +435,21 @@
 			path = "全屏测滑返回实现";
 			sourceTree = "<group>";
 		};
+		E78FBF3C24E565E500721E5E /* 垂直的跑马灯 */ = {
+			isa = PBXGroup;
+			children = (
+				E78FBF3D24E565E500721E5E /* AppDelegate.swift */,
+				E78FBF3F24E565E500721E5E /* SceneDelegate.swift */,
+				E78FBF4124E565E500721E5E /* ViewController.swift */,
+				E78FBF4F24E5695500721E5E /* random.json */,
+				E78FBF4324E565E500721E5E /* Main.storyboard */,
+				E78FBF4624E565E700721E5E /* Assets.xcassets */,
+				E78FBF4824E565E700721E5E /* LaunchScreen.storyboard */,
+				E78FBF4B24E565E700721E5E /* Info.plist */,
+			);
+			path = "垂直的跑马灯";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -532,12 +572,30 @@
 			productReference = E7537E5D24DFB89500224DC9 /* 全屏测滑返回实现.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E78FBF3A24E565E400721E5E /* 垂直的跑马灯 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E78FBF4E24E565E700721E5E /* Build configuration list for PBXNativeTarget "垂直的跑马灯" */;
+			buildPhases = (
+				E78FBF3724E565E400721E5E /* Sources */,
+				E78FBF3824E565E400721E5E /* Frameworks */,
+				E78FBF3924E565E400721E5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "垂直的跑马灯";
+			productName = "垂直的跑马灯";
+			productReference = E78FBF3B24E565E400721E5E /* 垂直的跑马灯.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		E72013CA24DEBFAF003DB927 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = peterlee;
 				TargetAttributes = {
@@ -562,6 +620,9 @@
 					E7537E5C24DFB89500224DC9 = {
 						CreatedOnToolsVersion = 11.6;
 					};
+					E78FBF3A24E565E400721E5E = {
+						CreatedOnToolsVersion = 11.6;
+					};
 				};
 			};
 			buildConfigurationList = E72013CD24DEBFAF003DB927 /* Build configuration list for PBXProject "Runtime笔记" */;
@@ -584,6 +645,7 @@
 				E7537E0F24DF9AA000224DC9 /* 自动归解档 */,
 				E7537E2C24DF9AAD00224DC9 /* 交换方法 */,
 				E7537E5C24DFB89500224DC9 /* 全屏测滑返回实现 */,
+				E78FBF3A24E565E400721E5E /* 垂直的跑马灯 */,
 			);
 		};
 /* End PBXProject section */
@@ -658,6 +720,17 @@
 				E7537E6F24DFB89600224DC9 /* LaunchScreen.storyboard in Resources */,
 				E7537E6C24DFB89600224DC9 /* Assets.xcassets in Resources */,
 				E7537E6A24DFB89500224DC9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E78FBF3924E565E400721E5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E78FBF5024E5695500721E5E /* random.json in Resources */,
+				E78FBF4A24E565E700721E5E /* LaunchScreen.storyboard in Resources */,
+				E78FBF4724E565E700721E5E /* Assets.xcassets in Resources */,
+				E78FBF4524E565E500721E5E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,6 +821,16 @@
 				CF0BB8CB24E036630017BCFD /* UINavigationController+fullScroll.m in Sources */,
 				E7537E6124DFB89500224DC9 /* AppDelegate.m in Sources */,
 				E7537E7224DFB89600224DC9 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E78FBF3724E565E400721E5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E78FBF4224E565E500721E5E /* ViewController.swift in Sources */,
+				E78FBF3E24E565E500721E5E /* AppDelegate.swift in Sources */,
+				E78FBF4024E565E500721E5E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,6 +945,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				E7537E6E24DFB89600224DC9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E78FBF4324E565E500721E5E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E78FBF4424E565E500721E5E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E78FBF4824E565E700721E5E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E78FBF4924E565E700721E5E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1207,6 +1306,44 @@
 			};
 			name = Release;
 		};
+		E78FBF4C24E565E700721E5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "垂直的跑马灯/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.demo.peterlee.------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E78FBF4D24E565E700721E5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "垂直的跑马灯/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.demo.peterlee.------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1278,6 +1415,15 @@
 			buildConfigurations = (
 				E7537E7424DFB89600224DC9 /* Debug */,
 				E7537E7524DFB89600224DC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E78FBF4E24E565E700721E5E /* Build configuration list for PBXNativeTarget "垂直的跑马灯" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E78FBF4C24E565E700721E5E /* Debug */,
+				E78FBF4D24E565E700721E5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

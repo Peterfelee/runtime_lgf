@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self parseArray];
-    [self parseDict];
+//    [self parseDict];
 }
 
 -(void)parseArray

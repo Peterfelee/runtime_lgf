@@ -17,6 +17,8 @@
     NSInteger count = 0;
     
     objc_property_t *pList = class_copyPropertyList([Person class], &count);
+    unsigned int outcount = 0;
+    class_copyIvarList([self class], &outcount);
     
     for (int i = 0 ; i < count; i++)
     {

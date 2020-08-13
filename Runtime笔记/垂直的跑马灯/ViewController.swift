@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         marQueeView = WDMarQueeView(frame: CGRect(x: 15, y: 160, width: UIScreen.main.bounds.width - 30, height: 68))
         marQueeView.backgroundColor = UIColor.gray.withAlphaComponent(0.6)
         view.addSubview(marQueeView)
+        marQueeView.layer.cornerRadius = 10
         marQueeView.start()
         // Do any additional setup after loading the view.
     }
@@ -149,6 +150,7 @@ class WDSingleLabelCell:UITableViewCell{
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
         titleLabel = UILabel()
+        titleLabel.textAlignment = .center
         titleLabel.lineBreakMode = .byTruncatingMiddle
         contentView.addSubview(titleLabel)
     }

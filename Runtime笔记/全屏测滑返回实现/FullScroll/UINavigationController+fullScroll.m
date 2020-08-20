@@ -12,13 +12,34 @@
  思路来源参考 https://www.jianshu.com/p/d39f7d22db6c
  具体更详细的实现https://github.com/forkingdog/FDFullscreenPopGesture
  */
-@interface UINavigationController()
 
-@property(nonatomic,strong)UIPanGestureRecognizer  *popGesture;
+@interface FullScrollPopGestureDelegate:NSObject <UIGestureRecognizerDelegate>
+@property(nonatomic,weak) UINavigationController *navigationController;
+@end
+
+@implementation FullScrollPopGestureDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    return YES;
+}
 
 @end
 
+@interface UINavigationController()
+@property(nonatomic,strong)UIPanGestureRecognizer  *popGesture;
+@end
+
 @implementation UINavigationController (fullScroll)
+
+- (FullScrollPopGestureDelegate *)fullScrolldelegate{
+    FullScrollPopGestureDelegate *delegate = objc_getAssociatedObject(self, _cmd);
+    if (!delegate) {
+        delegate = [FullScrollPopGestureDelegate new];
+        delegate.navigationController = self;
+        objc_setAssociatedObject(self, _cmd, delegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return delegate;
+}
 
 ///设置只读属性
 - (UIPanGestureRecognizer *)popGesture
@@ -51,41 +72,9 @@
         {
             method_exchangeImplementations(oldMethod, newMethod);
         }
-        
-//        //测试代码
-//        Method oldMethod = class_getInstanceMethod([self class], @selector(test));
-//        Method newMethod = class_getInstanceMethod([self class], @selector(new_test));
-//
-//        BOOL isAdd = class_addMethod([self class], @selector(test), method_getImplementation(newMethod), method_getTypeEncoding(newMethod));
-//        if (isAdd)
-//        {
-//            class_replaceMethod([self class], @selector(new_test), method_getImplementation(oldMethod), method_getTypeEncoding(oldMethod));
-//        }
-//        else
-//        {
-//            method_exchangeImplementations(oldMethod, newMethod);
-//        }
-        
     });
-    
-    
 }
 
--(void)test{
-    NSLog(@"%s",__func__);
-}
-
-
--(void)new_test{
-    NSLog(@"%s",__func__);
-    [self new_test];
-}
-
-//- (void)viewDidLoad
-//{
-//    [super viewDidLoad];
-//
-//}
 
 - (void)custom_pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
@@ -103,7 +92,7 @@
         id target = [targets.firstObject valueForKey:@"target"];
         SEL action = NSSelectorFromString(@"handleNavigationTransition:");
         [self.popGesture addTarget:target action:action];
-        self.popGesture.delegate = self.interactivePopGestureRecognizer.delegate;
+        self.popGesture.delegate = self.fullScrolldelegate;
         self.interactivePopGestureRecognizer.enabled = NO;
     }
     
@@ -113,21 +102,5 @@
         NSLog(@"custom%s",__func__);
     }
 }
-
-///根据消息转发机制 处理 我们在调用没有实现的方法时的逻辑 通过动态方法解析的方式 去新增一个实现 来完成这个方法的完整调用
-//void replace_test(id self,SEL sel)
-//{
-//    NSLog(@"%@ %@",self,NSStringFromSelector(sel));
-//}
-//
-//+ (BOOL)resolveInstanceMethod:(SEL)sel
-//{
-//    if (sel == NSSelectorFromString(@"test"))
-//    {
-//        class_addMethod([self class], @selector(test), replace_test, "v@:");
-//        return YES;
-//    }
-//    return [super resolveInstanceMethod:sel];
-//}
 
 @end

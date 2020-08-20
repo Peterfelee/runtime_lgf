@@ -418,14 +418,13 @@
 		E7537E5E24DFB89500224DC9 /* 全屏测滑返回实现 */ = {
 			isa = PBXGroup;
 			children = (
+				E7921FC024EE4AF900955FD7 /* FullScroll */,
 				E7537E5F24DFB89500224DC9 /* AppDelegate.h */,
 				E7537E6024DFB89500224DC9 /* AppDelegate.m */,
 				E7537E6524DFB89500224DC9 /* ViewController.h */,
 				E7537E6624DFB89500224DC9 /* ViewController.m */,
 				CF0BB8CC24E0506B0017BCFD /* CustomViewController.h */,
 				CF0BB8CD24E0506B0017BCFD /* CustomViewController.m */,
-				CF0BB8C924E036630017BCFD /* UINavigationController+fullScroll.h */,
-				CF0BB8CA24E036630017BCFD /* UINavigationController+fullScroll.m */,
 				E7537E6824DFB89500224DC9 /* Main.storyboard */,
 				E7537E6B24DFB89600224DC9 /* Assets.xcassets */,
 				E7537E6D24DFB89600224DC9 /* LaunchScreen.storyboard */,
@@ -448,6 +447,15 @@
 				E78FBF4B24E565E700721E5E /* Info.plist */,
 			);
 			path = "垂直的跑马灯";
+			sourceTree = "<group>";
+		};
+		E7921FC024EE4AF900955FD7 /* FullScroll */ = {
+			isa = PBXGroup;
+			children = (
+				CF0BB8C924E036630017BCFD /* UINavigationController+fullScroll.h */,
+				CF0BB8CA24E036630017BCFD /* UINavigationController+fullScroll.m */,
+			);
+			path = FullScroll;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

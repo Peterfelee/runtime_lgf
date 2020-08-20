@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "CustomViewController.h"
 
 @interface ViewController ()
 
@@ -23,7 +24,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self.navigationController pushViewController:[TestViewController new] animated:YES];
+    [self.navigationController pushViewController:[CustomViewController new] animated:YES];
 }
 
 
@@ -47,5 +48,15 @@
     self.view.backgroundColor = [UIColor brownColor];
     [self.navigationController performSelector:NSSelectorFromString(@"test")];//可以调用类的私有方法
 }
+
+@end
+
+@interface TestTableView : UITableView
+
+@end
+
+@implementation TestTableView
+
+
 
 @end

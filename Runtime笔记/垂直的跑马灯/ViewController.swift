@@ -13,17 +13,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         marQueeView = WDMarQueeView(frame: CGRect(x: 15, y: 160, width: UIScreen.main.bounds.width - 30, height: 68))
-        marQueeView.backgroundColor = UIColor.gray.withAlphaComponent(0.6)
+        marQueeView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.6)
+        marQueeView.datas = WDShareRandomManager.shared.getRandomData()
         view.addSubview(marQueeView)
         marQueeView.layer.cornerRadius = 10
+        marQueeView.direction = .horizontal
         marQueeView.start()
         // Do any additional setup after loading the view.
     }
 
 }
-
-
-
 
 ///获取随机的获取积分的跑马灯文字
 class WDShareRandomManager:NSObject
@@ -74,41 +73,39 @@ class WDShareRandomManager:NSObject
 }
 
 ///跑马灯
-class WDMarQueeView:UIView,UITableViewDelegate,UITableViewDataSource
-{
-    private var tableView:UITableView!
-    private var datas:[NSAttributedString] = WDShareRandomManager.shared.getRandomData()
+class WDMarQueeView:UIView{
+    var datas:[NSAttributedString] = [NSAttributedString]()
+    var direction:UICollectionView.ScrollDirection = .vertical{
+        didSet{
+            assert(timer == nil, "Plase set <direction> before <start>")
+            if collectionLayout.scrollDirection == direction{
+                return
+            }
+            collectionLayout.scrollDirection = direction
+        }
+    }
+    private var contentScrollView:UICollectionView!
     private var timer:Timer?
     private var currentIndex:NSInteger = 0
+    private let reuseIdentifer = "WDSingleLabelCell_reuse"
+    private var collectionLayout:UICollectionViewFlowLayout!
     override init(frame: CGRect) {
         super.init(frame: frame)
-        tableView = UITableView(frame: .zero, style: .plain)
-        tableView.isScrollEnabled = false
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = (68)
-        tableView.backgroundColor = UIColor.clear//(hex: 0xFFAD00)
-        addSubview(tableView)
-        tableView.isUserInteractionEnabled = false
-        tableView.register(WDSingleLabelCell.classForCoder(), forCellReuseIdentifier: NSStringFromClass(WDSingleLabelCell.self))
-        tableView.frame = self.bounds
+        collectionLayout = UICollectionViewFlowLayout()
+        collectionLayout.itemSize = CGSize(width: self.bounds.size.width, height: 68)
+        collectionLayout.scrollDirection = direction
+        contentScrollView = UICollectionView(frame: self.bounds, collectionViewLayout: collectionLayout)
+        contentScrollView.isScrollEnabled = false
+        contentScrollView.delegate = self
+        contentScrollView.dataSource = self
+        contentScrollView.backgroundColor = UIColor.clear//(hex: 0xFFAD00)
+        contentScrollView.register(WDSingleLabelCell.classForCoder(), forCellWithReuseIdentifier: self.reuseIdentifer)
+        addSubview(contentScrollView)
+        contentScrollView.isUserInteractionEnabled = false
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return datas.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell:WDSingleLabelCell? = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(WDSingleLabelCell.self)) as? WDSingleLabelCell
-        if (cell != nil)  {
-            cell = WDSingleLabelCell()
-        }
-        cell?.titleLabel?.attributedText = datas[indexPath.row]
-        return cell!
     }
     
     ///开启动画
@@ -118,7 +115,7 @@ class WDMarQueeView:UIView,UITableViewDelegate,UITableViewDataSource
                 if let temp = self
                 {
                     temp.currentIndex = temp.currentIndex >= temp.datas.count - 1 ? 0:temp.currentIndex + 1
-                    temp.tableView.scrollToRow(at: IndexPath(row: temp.currentIndex, section: 0), at: .none, animated: true)
+                         temp.contentScrollView.scrollToItem(at: IndexPath(row: temp.currentIndex, section: 0), at: temp.direction == UICollectionView.ScrollDirection.vertical ? .centeredVertically:.centeredHorizontally, animated: true)
                 }
             })
             RunLoop.current.add(timer!, forMode: .common)
@@ -141,18 +138,33 @@ class WDMarQueeView:UIView,UITableViewDelegate,UITableViewDataSource
             timer = nil
         }
     }
-    
 }
 
-class WDSingleLabelCell:UITableViewCell{
-     var titleLabel:UILabel!
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+extension WDMarQueeView:UICollectionViewDelegate,UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return datas.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell:WDSingleLabelCell? = collectionView.dequeueReusableCell(withReuseIdentifier: self.reuseIdentifer, for: indexPath) as? WDSingleLabelCell
+        cell?.titleLabel?.attributedText = datas[indexPath.row]
+        return cell ?? WDSingleLabelCell()
+    }
+}
+
+class WDSingleLabelCell:UICollectionViewCell{
+    var titleLabel:UILabel!
+    var icon:UIImageView!
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         backgroundColor = .clear
         titleLabel = UILabel()
         titleLabel.textAlignment = .center
         titleLabel.lineBreakMode = .byTruncatingMiddle
         contentView.addSubview(titleLabel)
+        
+        icon = UIImageView(image: UIImage(named: "icon_off"))
+        contentView.addSubview(icon)
     }
     
     required init?(coder: NSCoder) {
@@ -160,7 +172,9 @@ class WDSingleLabelCell:UITableViewCell{
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        titleLabel.frame = self.bounds
+        let imageSize = CGSize(width: self.bounds.height - 20, height: self.bounds.height - 20)
+        icon.frame = CGRect(origin: CGPoint(x: 15, y: 10), size: imageSize)
+        titleLabel.frame = CGRect(origin: CGPoint(x: icon.frame.maxX + 10, y: 0), size: CGSize(width: self.bounds.size.width - 15 - icon.frame.maxX - 10, height: self.bounds.size.height))
     }
 }
 
